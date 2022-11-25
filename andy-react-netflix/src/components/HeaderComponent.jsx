@@ -6,7 +6,7 @@ class HeaderComponent extends Component {
     return (
       <div className="header d-flex align-items-center justify-content-between px-4 mb-3">
         <div className="headerLeft d-flex">
-          <h3 className="videoType">TV Shows</h3>
+          <h3 className="videoType">Recommended TV Shows</h3>
           <div className="genres d-flex align-items-center">
             <div>Genres</div>
             <div>

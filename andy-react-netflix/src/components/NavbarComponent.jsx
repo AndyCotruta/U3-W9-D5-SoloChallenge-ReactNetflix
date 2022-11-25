@@ -37,11 +37,11 @@ class NavbarComponent extends Component {
           </Nav>
           <Form inline className="rightNavbar">
             <input className="searchField" type="text" placeholder="Search" />
-            <BsSearch />
-            <div>KIDS</div>
-            <BsBellFill />
+            <BsSearch className="hoverIcon" />
+            <div className="hoverIcon">KIDS</div>
+            <BsBellFill className="hoverIcon" />
             <img className="netflixLogo" src="avatar.png" alt="avatar" />
-            <BsFillCaretDownFill className="mr-2" />
+            <BsFillCaretDownFill className="mr-2 hoverIcon" />
           </Form>
         </Navbar.Collapse>
       </Navbar>
