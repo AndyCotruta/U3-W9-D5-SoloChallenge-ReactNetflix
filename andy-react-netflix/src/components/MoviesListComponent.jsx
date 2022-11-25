@@ -4,7 +4,7 @@ import MovieCard from "./MovieCardComponent";
 class MoviesList extends Component {
   state = {
     results: {},
-    moviesSaga: ["Ice Age", "Toy Story"],
+    moviesSaga: ["Ice Age", "Madagascar", "How to train your dragon"],
     moviesList: [],
   };
 

@@ -92,4 +92,10 @@
   height: 200px;
   overflow: hidden;
   border: none !important;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.movieCard:hover {
+  transform: scale(1.05);
 }
