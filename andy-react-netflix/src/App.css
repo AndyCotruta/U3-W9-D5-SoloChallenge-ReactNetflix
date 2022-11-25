@@ -9,6 +9,8 @@
 .body {
   background: var(--home-bg-color);
   color: var(--text-color);
+  height: 100vh;
+  overflow: auto;
 }
 
 .navBar {
