@@ -9,7 +9,6 @@ function App() {
     <div className="body">
       <NavbarComponent />
       <HeaderComponent />
-      <div className="mb-2 px-4">Movies List</div>
       <MoviesList />
     </div>
   );

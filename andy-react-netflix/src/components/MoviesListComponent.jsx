@@ -3,8 +3,8 @@ import MovieCard from "./MovieCardComponent";
 
 class MoviesList extends Component {
   state = {
-    results: { harry: [], lord: [] },
-    moviesSaga: ["harry%20potter", "lord%20of%20the%20rings"],
+    results: {},
+    moviesSaga: ["Ice Age", "Toy Story"],
     moviesList: [],
   };
 
@@ -16,7 +16,7 @@ class MoviesList extends Component {
           this.setState({
             results: {
               ...this.state.results,
-              [saga.split("%20")[0]]: data.Search,
+              [saga]: data.Search,
             },
           })
         )
@@ -44,12 +44,19 @@ class MoviesList extends Component {
 
   render() {
     return (
-      <div className="moviesList row px-4">
+      <div className="moviesList px-4">
         {Object.keys(this.state.results).map((saga) => {
-          <div>{saga}</div>;
-          return this.state.results[saga].map((sagaList) => (
-            <MovieCard moviesList={sagaList} />
-          ));
+          return (
+            <>
+              {" "}
+              <h4 className="my-3">{saga}</h4>
+              <div className="row">
+                {this.state.results[saga].map((sagaList) => (
+                  <MovieCard moviesList={sagaList} />
+                ))}
+              </div>
+            </>
+          );
         })}
       </div>
     );
