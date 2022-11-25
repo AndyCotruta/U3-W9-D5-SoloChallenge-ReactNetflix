@@ -1,41 +1,35 @@
 import { Component } from "react";
 import MovieCard from "./MovieCardComponent";
+import { Spinner, Alert } from "react-bootstrap";
 
 class MoviesList extends Component {
   state = {
     results: {},
-    moviesSaga: ["Ice Age", "Madagascar", "How to train your dragon"],
+    moviesSaga: ["Ice Age", "Shrek", "Madagascar", "How to train your dragon"],
     moviesList: [],
+    isLoading: true,
+    isError: false,
   };
 
   handleFetch = () => {
-    this.state.moviesSaga.map((saga) =>
-      fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=263d5320&s=${saga}`)
-        .then((testResponse) => testResponse.json())
-        .then((data) =>
-          this.setState({
-            results: {
-              ...this.state.results,
-              [saga]: data.Search,
-            },
-          })
-        )
-        .catch(console.error)
-    );
-    // let response = await fetch(
-    //   "http://www.omdbapi.com/?i=tt3896198&apikey=263d5320&s=harry%20potter"
-    // );
-    // try {
-    //   if (response.ok) {
-    //     let data = await response.json();
-    //     console.log(data.Search);
-    //     this.setState({ moviesList: data.Search });
-    //   } else {
-    //     console.log("Something went wrong while fetching");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      this.state.moviesSaga.map((saga) =>
+        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=263d5320&s=${saga}`)
+          .then((testResponse) => testResponse.json())
+          .then((data) =>
+            this.setState({
+              results: {
+                ...this.state.results,
+                [saga]: data.Search,
+              },
+            })
+          )
+          .then((data) => this.setState({ isLoading: false }))
+          .catch(console.error)
+      );
+    } catch (error) {
+      this.setState({ isError: true });
+    }
   };
 
   componentDidMount = () => {
@@ -45,17 +39,30 @@ class MoviesList extends Component {
   render() {
     return (
       <div className="moviesList px-4">
+        {this.state.isLoading && (
+          <div className="isLoadingText d-flex align-items-center mb-2">
+            <div className=" mr-2">Content is loading...</div>
+            <Spinner animation="border" role="status" className="spinner">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          </div>
+        )}
+        {this.state.isError && (
+          <Alert variant="danger">
+            Ouch, something went wrong while loading movies :(
+          </Alert>
+        )}
         {Object.keys(this.state.results).map((saga) => {
           return (
-            <>
+            <div key={saga}>
               {" "}
               <h4 className="my-3">{saga}</h4>
               <div className="row">
                 {this.state.results[saga].map((sagaList) => (
-                  <MovieCard moviesList={sagaList} />
+                  <MovieCard moviesList={sagaList} key={sagaList.imdbID} />
                 ))}
               </div>
-            </>
+            </div>
           );
         })}
       </div>

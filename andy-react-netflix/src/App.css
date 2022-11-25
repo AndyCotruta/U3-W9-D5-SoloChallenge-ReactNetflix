@@ -88,6 +88,11 @@
   color: var(--text-color);
 }
 
+.isLoadingText {
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
 .movieCard {
   height: 200px;
   overflow: hidden;
