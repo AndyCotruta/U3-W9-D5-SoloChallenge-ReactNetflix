@@ -1,0 +1,95 @@
+:root {
+  --home-bg-color: #000;
+  --account-bg-color: #f3f3f3;
+  --text-color: #fff;
+  --primary-color: #e40a13;
+  --secondary-color: #929292;
+}
+
+.body {
+  background: var(--home-bg-color);
+  color: var(--text-color);
+}
+
+.navBar {
+  background-color: var(--home-bg-color);
+  color: var(--text-color) !important;
+}
+
+.navbarToggle {
+  background-color: #e50815 !important;
+}
+
+.netflixLogo {
+  height: 48px;
+}
+
+.navLinks {
+  color: var(--secondary-color) !important;
+}
+
+.navLinks:hover {
+  color: var(--text-color) !important;
+}
+
+.rightNavbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--secondary-color);
+}
+
+.searchField {
+  background-color: transparent;
+  border: 1px solid var(--secondary-color);
+  padding: 2px 4px;
+}
+
+.searchField:focus {
+  outline: none;
+  color: var(--secondary-color);
+}
+
+.header {
+  height: 41.5px;
+}
+
+.headerRight {
+  color: var(--secondary-color);
+}
+
+/* .videoType {
+  font-size: 2rem;
+} */
+
+.genres {
+  padding: 0.375rem 0.75rem;
+  margin-left: 4em;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+}
+
+.genres:hover {
+  background-color: var(--text-color);
+  color: var(--home-bg-color);
+}
+
+.viewButtons {
+  border: 1px solid var(--secondary-color);
+  height: 41.5px;
+  width: 41.5px;
+  font-size: 1.5rem;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.viewButtons:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.movieCard {
+  height: 200px;
+  overflow: hidden;
+  border: none !important;
+}
