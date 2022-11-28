@@ -6,7 +6,6 @@ class MoviesList extends Component {
   state = {
     results: {},
     moviesSaga: ["Ice Age", "Shrek", "Madagascar", "How to train your dragon"],
-    moviesList: [],
     isLoading: true,
     isError: false,
   };
