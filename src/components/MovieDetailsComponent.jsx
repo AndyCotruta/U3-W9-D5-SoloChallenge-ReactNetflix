@@ -8,9 +8,9 @@ const MovieDetails = () => {
 
   const [movie, setMovie] = useState(null);
 
-  const fetchMovie = async () => {
+  const fetchMovie = async (id) => {
     let response = await fetch(
-      "http://www.omdbapi.com/?apikey=263d5320&i=" + params.movieId
+      "http://www.omdbapi.com/?apikey=263d5320&i=" + id
     );
     let data = await response.json();
     console.log(data);
@@ -18,8 +18,8 @@ const MovieDetails = () => {
   };
 
   useEffect(() => {
-    fetchMovie();
-  }, []);
+    fetchMovie(params.movieId);
+  }, [params.movieId]);
 
   return (
     <div className="body">

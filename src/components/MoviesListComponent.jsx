@@ -11,10 +11,7 @@ const MoviesList = () => {
   // };
 
   const [results, setResults] = useState({});
-  const [moviesSaga, setMoviesSaga] = useState([
-    "Madagascar",
-    "How to train your dragon",
-  ]);
+  const [moviesSaga] = useState(["Madagascar", "How to train your dragon"]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
