@@ -19,12 +19,12 @@ const MoviesList = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    handleFetch();
-  }, []);
+    handleFetch(moviesSaga);
+  }, [moviesSaga]);
 
-  const handleFetch = () => {
+  const handleFetch = (moviesArray) => {
     try {
-      moviesSaga
+      moviesArray
         .map((saga) =>
           fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=263d5320&s=${saga}`)
             .then((testResponse) => testResponse.json())
@@ -35,7 +35,7 @@ const MoviesList = () => {
               //     [saga]: data.Search,
               //   },
               // })
-              setResults({ ...results, [saga]: data.Search })
+              setResults((prevData) => ({ ...prevData, [saga]: data.Search }))
             )
             .then((data) => setIsLoading(false))
         )
