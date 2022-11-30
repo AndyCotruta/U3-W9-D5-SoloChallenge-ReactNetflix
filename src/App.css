@@ -9,13 +9,14 @@
 .body {
   background: var(--home-bg-color);
   color: var(--text-color);
-  height: 100vh;
+  height: 85vh;
   overflow: auto;
 }
 
 .navBar {
   background-color: var(--home-bg-color);
   color: var(--text-color) !important;
+  height: 15vh;
 }
 
 .navbarToggle {
@@ -29,6 +30,7 @@
 .navLinks {
   color: var(--secondary-color) !important;
   transition: transform 0.2s ease-in-out;
+  margin-inline: 0.5rem;
 }
 
 .navLinks:hover {
@@ -115,4 +117,8 @@
 .movieCard:hover {
   transform: scale(1.05);
   filter: brightness(1);
+}
+
+.tvshowsheader {
+  padding: 0;
 }
