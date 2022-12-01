@@ -1,7 +1,7 @@
-import { Navbar, Nav, Form } from "react-bootstrap/";
-import { BsSearch, BsBellFill, BsFillCaretDownFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Form, Nav, Navbar } from "react-bootstrap/";
+import { BsBellFill, BsFillCaretDownFill, BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const NavbarComponent = () => {
   const [tvshows, setTvShows] = useState(false);
