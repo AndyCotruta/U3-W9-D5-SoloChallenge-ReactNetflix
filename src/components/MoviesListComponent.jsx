@@ -26,10 +26,15 @@ const MoviesList = () => {
         const data = await response.json();
         console.log(data);
         setResults(data);
+        setIsLoading(false);
       } else {
-        console.log(" while fetching");
+        console.log("Error while fetching");
+        setIsLoading(false);
+        setIsError(true);
       }
     } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
       console.log(error);
     }
   };
