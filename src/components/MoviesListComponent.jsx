@@ -14,6 +14,7 @@ const MoviesList = () => {
   const [moviesSaga] = useState(["Madagascar", "How to train your dragon"]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const apiEndpoint = process.env.REACT_APP_BE_URL;
 
   useEffect(() => {
     handleFetch(moviesSaga);
@@ -23,7 +24,7 @@ const MoviesList = () => {
     try {
       moviesArray
         .map((saga) =>
-          fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=263d5320&s=${saga}`)
+          fetch(`${apiEndpoint}/media`)
             .then((testResponse) => testResponse.json())
             .then((data) =>
               // this.setState({
