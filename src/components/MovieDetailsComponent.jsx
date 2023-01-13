@@ -20,6 +20,24 @@ const MovieDetails = () => {
     fetchMovie(params.movieId);
   }, [params.movieId]);
 
+  const getPdf = async (id, title) => {
+    try {
+      const response = await fetch(`${apiEndpoint}/media/${id}/pdf`);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = url;
+      a.download = `${title}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="body">
       {" "}
@@ -33,6 +51,12 @@ const MovieDetails = () => {
             <p>Title: {movie.title}</p>
             <p>Year: {movie.year}</p>
             <p>Genre: {movie.type}</p>
+            <button
+              className="btn btn-danger"
+              onClick={() => getPdf(movie.imdbID, movie.title)}
+            >
+              Get PDF
+            </button>
           </div>
         </div>
       )}
