@@ -27,7 +27,7 @@ const MovieDetails = () => {
       {movie !== null && (
         <div className="mx-4 d-flex">
           <div>
-            <img src={movie.poster} alt="Movie Poster" />
+            <img className="detailsImg" src={movie.poster} alt="Movie Poster" />
           </div>
           <div className="movieDetails p-4">
             <p>Title: {movie.title}</p>

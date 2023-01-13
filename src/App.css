@@ -119,6 +119,15 @@
   filter: brightness(1);
 }
 
+.movieImg {
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailsImg {
+  width: 100%;
+}
+
 .tvshowsheader {
   padding: 0;
 }
