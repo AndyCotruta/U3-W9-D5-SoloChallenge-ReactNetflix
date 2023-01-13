@@ -9,6 +9,9 @@ const MoviesList = () => {
   //   isLoading: true,
   //   isError: false,
   // };
+    useEffect(() => {
+    handleFetch();
+  }, []);
 
   const [results, setResults] = useState({});
   const [moviesSaga] = useState(["Madagascar", "How to train your dragon"]);
@@ -16,32 +19,18 @@ const MoviesList = () => {
   const [isError, setIsError] = useState(false);
   const apiEndpoint = process.env.REACT_APP_BE_URL;
 
-  useEffect(() => {
-    handleFetch(moviesSaga);
-  }, [moviesSaga]);
 
-  const handleFetch = (moviesArray) => {
-    try {
-      moviesArray
-        .map((saga) =>
-          fetch(`${apiEndpoint}/media`)
-            .then((testResponse) => testResponse.json())
-            .then((data) =>
-              // this.setState({
-              //   results: {
-              //     ...this.state.results,
-              //     [saga]: data.Search,
-              //   },
-              // })
-              setResults((prevData) => ({ ...prevData, [saga]: data.Search }))
-            )
-            .then((data) => setIsLoading(false))
-        )
-        .catch(console.error);
-    } catch (error) {
-      // this.setState({ isError: true });
-    }
-  };
+const handleFetch = async () => {
+  try{
+const response = await fetch(`${apiEndpoint}/media`)
+if (response) {
+  const data = response.json()
+  setResults(data)
+} else {console.log(error)}
+  } catch(error) {
+    console.log(error)
+  }
+}
 
   // componentDidMount = () => {
   //   this.handleFetch();
