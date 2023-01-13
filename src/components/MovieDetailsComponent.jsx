@@ -7,11 +7,10 @@ const MovieDetails = () => {
   console.log(params.movieId);
 
   const [movie, setMovie] = useState(null);
+  const apiEndpoint = process.env.REACT_APP_BE_URL;
 
   const fetchMovie = async (id) => {
-    let response = await fetch(
-      "http://www.omdbapi.com/?apikey=263d5320&i=" + id
-    );
+    let response = await fetch(`${apiEndpoint}/media/` + id);
     let data = await response.json();
     console.log(data);
     setMovie(data);
@@ -28,12 +27,12 @@ const MovieDetails = () => {
       {movie !== null && (
         <div className="mx-4 d-flex">
           <div>
-            <img src={movie.Poster} alt="Movie Poster" />
+            <img src={movie.poster} alt="Movie Poster" />
           </div>
           <div className="movieDetails p-4">
-            <p>Plot: {movie.Plot}</p>
-            <p>Actors: {movie.Actors}</p>
-            <p>Genre: {movie.Genre}</p>
+            <p>Title: {movie.title}</p>
+            <p>Year: {movie.year}</p>
+            <p>Genre: {movie.type}</p>
           </div>
         </div>
       )}

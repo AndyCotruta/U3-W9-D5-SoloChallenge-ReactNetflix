@@ -9,28 +9,30 @@ const MoviesList = () => {
   //   isLoading: true,
   //   isError: false,
   // };
-    useEffect(() => {
+  useEffect(() => {
     handleFetch();
   }, []);
 
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState([]);
   const [moviesSaga] = useState(["Madagascar", "How to train your dragon"]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const apiEndpoint = process.env.REACT_APP_BE_URL;
 
-
-const handleFetch = async () => {
-  try{
-const response = await fetch(`${apiEndpoint}/media`)
-if (response) {
-  const data = response.json()
-  setResults(data)
-} else {console.log(error)}
-  } catch(error) {
-    console.log(error)
-  }
-}
+  const handleFetch = async () => {
+    try {
+      const response = await fetch(`${apiEndpoint}/media`);
+      if (response) {
+        const data = await response.json();
+        console.log(data);
+        setResults(data);
+      } else {
+        console.log(" while fetching");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // componentDidMount = () => {
   //   this.handleFetch();
@@ -51,19 +53,14 @@ if (response) {
           Ouch, something went wrong while loading movies :(
         </Alert>
       )}
-      {Object.keys(results).map((saga) => {
-        return (
-          <div key={saga}>
-            {" "}
-            <h4 className="my-3">{saga}</h4>
-            <div className="row">
-              {results[saga].map((sagaList) => (
-                <MovieCard moviesList={sagaList} key={sagaList.imdbID} />
-              ))}
-            </div>
-          </div>
-        );
-      })}
+
+      <h4 className="my-3">Movies</h4>
+      <div className="row">
+        {results &&
+          results.map((movie) => (
+            <MovieCard moviesList={movie} key={movie.imdbID} />
+          ))}
+      </div>
     </div>
   );
 };
